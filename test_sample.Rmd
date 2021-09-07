@@ -36,5 +36,185 @@ map <- ggplot() +
 map
 
 ```
+make my second map is just to try what i will get loading both OpenSpace in shp and gdb
+```{r}
+map_2 <- ggplot() +
+  geom_sf(data = OpenSpace2) +
+  geom_sf(data = OpenSpace)
 
+map_2
+
+```
+now I'm gonna map_3 with OpenSpace and ParkLIghts
+
+```{r}
+map3 <- ggplot() +
+  geom_sf(data = OpenSpace) +
+  geom_sf(data = ParkLightGDB)
+
+map3
+```
+```{r}
+map3 <- ggplot() +
+  geom_sf(data = OpenSpace) +
+  geom_sf(fill = "green")
+
+map3
+```
+
+```{r}
+ggplot(ParkLightGDB) +
+  geom_sf(shape = 17, color = "blue", size = 5, alpha=0.1)
+```
+```{r}
+map3 <- ggplot(OpenSpace) +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB) +
+  geom_sf(data = OpenSpace2)
+
+map3
+
+```
+
+```{r}
+map3 <- ggplot(OpenSpace) +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB, color = "yellow") +
+  geom_sf(data = OpenSpace2, color = "green")
+
+map3
+
+```
+```{r}
+map4 <- ggplot(OpenSpace) +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB, color = "yellow",
+          size = 0.01) +
+  geom_sf(data = OpenSpace2, color = "black",
+          size = 0.2,
+          fill = "green",
+          alpha = 0.15)
+
+map4
+```
+```{r}
+map4 <- ggplot(OpenSpace) +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB, color = "yellow",
+          size = 0.01) +
+  geom_sf(data = OpenSpace2, color = "black",
+          size = 0.2,
+          alpha = 0.15,
+          aes(fill = "OpenSpace2")) +
+scale_fill_manual(values = "green", name = "")
+
+map4
+```
+```{r}
+map4 <- ggplot(OpenSpace) +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB,
+          size = 0.01,
+          aes(color = "yellow")) +
+  geom_sf(data = OpenSpace2, color = "black",
+          size = 0.2,
+          alpha = 0.15,
+          aes(fill = "OpenSpace2")) +
+scale_fill_manual(values = "green", name = "")
+scale_color_manual(values = c("yellow"), name = "")
+
+map4
+```
+```{r}
+map4 <- ggplot(OpenSpace) +
+  annotation_map_tile(zoomin = 0, progress = "none", type = "cartolight")  +
+  geom_sf() +
+  labs(caption = "Map tiles and data by OpenStreetMap") +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB,
+          size = 0.01,
+          aes(color = "chocolate1")) +
+  geom_sf(data = OpenSpace2, color = "black",
+          size = 0.2,
+          alpha = 0.15,
+          aes(fill = "OpenSpace2")) +
+scale_fill_manual(values = "aquamarine", name = "")
+scale_color_manual(values = c("chocolate1"), name = "")
+
+map4
+```
+```{r}
+map4 <- ggplot(OpenSpace) +
+  annotation_map_tile(zoomin = 0, progress = "none", type = "stamenbw")  +
+  geom_sf() +
+  labs(caption = "Map tiles by Stamen Design. Data by OpenStreetMap") +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB,
+          size = 0.1,
+          aes(color = "brown1")) +
+  geom_sf(data = OpenSpace2, color = "aquamarine2",
+          size = 0.2,
+          alpha = 0.25,
+          aes(fill = "OpenSpace2")) +
+scale_fill_manual(values = "chartreuse2", name = "")
+scale_color_manual(values = c("chocolate1"), name = "")
+
+map4
+```
+```{r}
+map4 <- ggplot() +
+  annotation_map_tile(zoomin = 0, progress = "none", type = "stamenbw")  +
+  geom_sf() +
+  labs(caption = "Map tiles by Stamen Design. Data by OpenStreetMap") +
+  geom_sf() +
+  geom_sf(data = ParkLightGDB,
+          size = 0.1,
+          aes(color = "brown1")) +
+  geom_sf(data = OpenSpace2, color = "aquamarine2",
+          size = 0.2,
+          alpha = 0.25,
+          aes(fill = "OpenSpace2")) +
+scale_fill_manual(values = "chartreuse2", name = "")
+scale_color_manual(values = c("chocolate1"), name = "")
+
+map4
+```
+```{r}
+map4 <- ggplot() +
+  annotation_map_tile(zoomin = 0, progress = "none", type = "stamenbw")  +
+  geom_sf() +
+  labs(caption = "Map tiles by Stamen Design. Data by OpenStreetMap") +
+  geom_sf() +
+  geom_sf(data = OpenSpace2, color = "aquamarine2",
+          size = 0.2,
+          alpha = 0.25,
+          aes(fill = "OpenSpace2")) +
+  geom_sf(data = ParkLightGDB,
+          size = 0.1,
+          aes(color = "brown1")) +
+scale_fill_manual(values = "chartreuse2", name = "")
+scale_color_manual(values = c("chocolate1"), name = "")
+
+map4
+```
+
+```{r}
+map4 <- ggplot() +
+  annotation_map_tile(zoomin = 0, progress = "none", type = "cartolight")  +
+  geom_sf() +
+  labs(caption = "Map tiles and data by OpenStreetMap") +
+  geom_sf() +
+  geom_sf(data = OpenSpace2, color = "chartreuse3",
+          size = 0.2,
+          alpha = 0.25,
+          aes(fill = "OpenSpace2")) +
+  geom_sf(data = ParkLightGDB,
+          size = 0.1,
+          aes(color = "darkgoldenrod2")) +
+scale_fill_manual(values = "chartreuse2", name = "") +
+scale_color_manual(values = c("darkgoldenrod2"), name = "") +
+  theme_void()
+
+map4
+```
 
