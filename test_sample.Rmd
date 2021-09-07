@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+author: "wladka"
+date: "9/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here is where I'll load my libraries
+
+```{r}
+library(ggthemes)
+library(tidyverse)
+library(sf)
+library(ggspatial)
+```
+
+Here is where I'll read in my data
+
+```{r, message=FALSE}
+OpenSpace <- st_read("OpenSpace.shp")
+OpenSpace2 <- st_read("OpenSpace.gdb")
+ParkLight <- st_read("ParkLights.shp")
+ParkLightGDB <- st_read("ParkLights.gdb")
+```
+
+Make my first map
+
+```{r}
+map <- ggplot() +
+  geom_sf(data = OpenSpace2)
+
+map
+
+```
+
+
